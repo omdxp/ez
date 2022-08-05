@@ -95,6 +95,25 @@ let hash = {
 print(hash["key"]);
 ```
 
+- there are some useful bultin functions for arrays:
+
+```
+let a = [1, 2, 3, 4, 5];
+
+let b = push(a, 6); // [1, 2, 3, 4, 5, 6]
+
+let c = tail(a); // [2, 3, 4, 5]
+
+let d = first(a); // 1
+
+let e = last(a); // 5
+
+print(len(a)); // 5
+
+```
+
+- `len` is used to get the length of an array or a string: `len(a)`
+
 ## run the interpreter
 
 ```sh
