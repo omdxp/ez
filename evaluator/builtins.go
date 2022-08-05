@@ -1,6 +1,10 @@
 package evaluator
 
-import "github.com/Omar-Belghaouti/ez/object"
+import (
+	"fmt"
+
+	"github.com/Omar-Belghaouti/ez/object"
+)
 
 var builtins = map[string]*object.Builtin{
 	"len": {
@@ -90,6 +94,22 @@ var builtins = map[string]*object.Builtin{
 			copy(newElements, arr.Elements)
 			newElements[length] = args[1]
 			return &object.Array{Elements: newElements}
+		},
+	},
+	"print": {
+		Fn: func(args ...object.Object) object.Object {
+			for _, arg := range args {
+				fmt.Print(arg.Inspect())
+			}
+			return NIL
+		},
+	},
+	"println": {
+		Fn: func(args ...object.Object) object.Object {
+			for _, arg := range args {
+				fmt.Println(arg.Inspect())
+			}
+			return NIL
 		},
 	},
 }
