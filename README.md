@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48713070/183254053-616803e8-37e3-42d6-94c7-a7e8813851fa.png" alt="ez" />
+</p>
+
 <h1 align="center">ez</h1>
 <p align="center">interpreted programming language</p>
 
@@ -84,6 +88,14 @@ let subResult = f(x, y) {
     x - y;
 }(x, y);
 print(subResult);
+
+let mulByFn = f(x, otherFn) {
+  ret x * otherFn(x)
+};
+let res = mulByFn(2, f(x) {
+  x + 2;
+});
+print(res);
 
 let arr = [1, 2, 3, add(x, y), true];
 print(arr[0]);
