@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"os/user"
 
-	"github.com/Omar-Belghaouti/ez/repl"
+	"github.com/Omar-Belghaouti/ez/cmd"
 )
 
 func main() {
@@ -16,5 +15,5 @@ func main() {
 
 	fmt.Printf("Hello %s to EZ programming language!\n", user.Username)
 	fmt.Print("You can type in your commands\n")
-	repl.Start(os.Stdin, os.Stdout)
+	cmd.Run()
 }

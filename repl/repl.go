@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"os"
 
 	"github.com/Omar-Belghaouti/ez/evaluator"
 	"github.com/Omar-Belghaouti/ez/lexer"
@@ -25,6 +26,9 @@ func Start(in io.Reader, out io.Writer) {
 		}
 
 		line := scanner.Text()
+		if line == "exit" {
+			return
+		}
 		l := lexer.New(line)
 		p := parser.New(l)
 
@@ -38,6 +42,39 @@ func Start(in io.Reader, out io.Writer) {
 		if evaluated != nil {
 			io.WriteString(out, evaluated.Inspect())
 			io.WriteString(out, "\n")
+		}
+	}
+}
+
+func RunFile(path string) error {
+	file, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	env := object.NewEnvironment()
+
+	for {
+		scanned := scanner.Scan()
+		if !scanned {
+			return nil
+		}
+
+		line := scanner.Text()
+		l := lexer.New(line)
+		p := parser.New(l)
+
+		program := p.ParseProgram()
+		if len(p.Errors()) != 0 {
+			printParserErrors(os.Stderr, p.Errors())
+			continue
+		}
+
+		evaluated := evaluator.Eval(program, env)
+		if evaluated != nil {
+			fmt.Println(evaluated.Inspect())
 		}
 	}
 }
