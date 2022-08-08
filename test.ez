@@ -1,2 +1,8 @@
-let factorial = f(n) { if (n == 0) {  1 } else {  n * factorial(n - 1) } }
-factorial(5)
+let name = "John"
+let age = 24
+let isMarried = true;
+
+let printPerson = f(name, age, isMarried) { println(name, age, isMarried) }
+
+printPerson(name, age, isMarried)
+println("hello, world")

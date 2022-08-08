@@ -32,6 +32,9 @@ a functional programming language, with first class functions and closures suppo
   - `let` is the let operator
   - `ret` is the return operator (can be omitted)
 
+- semi-colons are optional
+- for syntax highlighting, use the `ez-language-support` [extension](https://marketplace.visualstudio.com/items?itemName=OmarBelghaouti.ez-language-support)
+
 ## syntax
 
 - print a value: `print(value)`
@@ -52,7 +55,7 @@ sample code:
 println("hello world")
 
 let x = 1;
-let y = 2;
+let y = 2
 let z = x + y;
 print(z);
 
@@ -133,3 +136,5 @@ go run main.go
 ```
 
 and start typing in the console 💛
+
+- you can run it on a file: `go run main.go -file test.ez`
