@@ -46,12 +46,13 @@ func TestReturnStatements(t *testing.T) {
 		input         string
 		expectedValue interface{}
 	}{
-		{"ret 5;", 5},
+		{"ret 5", 5},
 		{"ret true;", true},
 		{"ret foobar;", "foobar"},
 	}
 
 	for _, tt := range tests {
+		println(tt.input)
 		l := lexer.New(tt.input)
 		p := New(l)
 		program := p.ParseProgram()
