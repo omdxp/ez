@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/Omar-Belghaouti/ez/repl"
 )
@@ -15,8 +16,13 @@ func Run() {
 	flag.Parse()
 
 	if *file != "" {
-		if err := repl.RunFile(*file); err != nil {
-			fmt.Printf("Error running file: %s\n", err)
+		if strings.HasSuffix(*file, ".ez") {
+			if err := repl.RunFile(*file); err != nil {
+				fmt.Printf("Error running file: %s\n", err)
+				os.Exit(1)
+			}
+		} else {
+			fmt.Println("File must have .ez extension")
 			os.Exit(1)
 		}
 	} else {
